@@ -1,0 +1,9 @@
+# tensorrt==10.1.0 --no-cache-dir
+# polygraphy
+
+colored
+cuda-python
+onnx
+onnxmltools
+onnxconverter_common
+numpy<2.0.0

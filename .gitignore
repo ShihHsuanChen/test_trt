@@ -1,0 +1,10 @@
+*pyc*
+*.egg*
+*.env
+*.onnx
+*.engine
+!trt.example.env
+models
+TensorRT
+result.json
+infer_script.py
