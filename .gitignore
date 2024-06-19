@@ -8,3 +8,4 @@ models
 TensorRT
 result.json
 infer_script.py
+edge_ocr

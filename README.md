@@ -1,6 +1,6 @@
 ## Install packages
 
-### Tensorrt
+### TensorRT
 
 ```
 $ pip install tensorrt==10.1.0 --no-cache-dir
@@ -21,12 +21,6 @@ $ pip install tensorrt==10.1.0 --no-cache-dir
     ```
 
 ### Internal packages for run inference test
-
-```
-$ pip install git+https://github.com/kaoyuching/edge_ocr.git
-```
-
-or in edit mode
 
 ```
 $ git clone https://github.com/kaoyuching/edge_ocr.git
@@ -67,3 +61,49 @@ $ apt install python3-libnvinfer-dev
     $ docker run -i -t trtenv:0.0.1 bash
     ```
 
+## Run
+
+### Convert onnx to tensorrt engine
+
+1. create model folder and put onnx models like
+
+    ```
+    ▾ models/
+      ▾ onnx/
+          crnn.onnx
+          nms.onnx
+          yolov5m.onnx
+      ▾ trt_10.x/
+    ```
+
+2. Run
+    ```
+    $ ./build_detect.sh
+    $ ./build_nms.sh
+    $ ./build_crnn.sh
+    ```
+
+
+### Run detect model
+
+```
+$ ./run_inference_test.sh
+```
+
+### Run the car plate detection
+
+
+1. Setup `trt.env` like `example.env`
+
+    ```
+    detect_model_path="./models/trt_10.x/yolov5m.engine"
+    nms_model_path="./models/trt_10.x/nms.engine"
+    crnn_model_path="./models/trt_10.x/crnn.engine"
+    data_dir="./data/"
+    ```
+
+2. Run
+
+    ```
+    $ python ./edge_ocr/main/trt_inference_test.py
+    ```
