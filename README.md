@@ -8,6 +8,13 @@ $ pip install tensorrt==10.1.0 --no-cache-dir
 
 ### Tools
 
+#### From PyPI
+
+```
+$ pip install polygraphy==0.49.9
+```
+
+#### From TensorRT repository
 1. Clone TensorRT repository from [https://github.com/NVIDIA/TensorRT/tree/release/10.1](https://github.com/NVIDIA/TensorRT/tree/release/10.1)
 
     ```

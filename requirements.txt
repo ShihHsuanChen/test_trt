@@ -1,6 +1,5 @@
 # tensorrt==10.1.0 --no-cache-dir
-# polygraphy
-
+# polygraphy==0.49.9
 colored
 cuda-python
 onnx
