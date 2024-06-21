@@ -12,7 +12,7 @@ def load_data() -> Generator[Dict[str, np.ndarray], None, None]:
 
     user_config = UserConfig('trt.env')
     imgsrc = [os.path.join(user_config.data_dir, f) for f in os.listdir(user_config.data_dir)]
-    for path in imgsrc[:10]:
+    for path in imgsrc:
         print(path)
         img, *_ = load_detect_image(path)
         yield {'images': img.astype(np.float32)}
