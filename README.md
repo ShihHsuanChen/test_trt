@@ -14,6 +14,9 @@ $ pip install tensorrt==10.1.0 --no-cache-dir
 $ pip install polygraphy==0.49.9
 ```
 
+Notice that `polygraphy-0.49.9` has GPU memory stacking problem, but converting onnx model is not affected.
+
+
 #### From TensorRT repository
 1. Clone TensorRT repository from [https://github.com/NVIDIA/TensorRT/tree/release/10.1](https://github.com/NVIDIA/TensorRT/tree/release/10.1)
 
@@ -25,6 +28,13 @@ $ pip install polygraphy==0.49.9
 
     ```
     $ pip install TensorRT/tools/Polygraphy/
+    ```
+    
+    check the installed version
+
+    ```
+    $ pip list | grep polygraphy
+    polygraphy 0.49.10
     ```
 
 ### Internal packages for run inference test
