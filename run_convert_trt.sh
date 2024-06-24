@@ -10,6 +10,9 @@ shift 2
 OPTIONS=$@
 echo $OPTIONS
 
+CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:=0}
+echo CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
+
 if [[ $OPTIONS =~ "--version-compatible" ]]; then
     echo "--version-compatible detected, run in docker container"
     touch $OUTPUT
@@ -18,6 +21,7 @@ if [[ $OPTIONS =~ "--version-compatible" ]]; then
     CONT_OUTPUT=$WORKDIR/models_out/$(basename $OUTPUT)
 
     docker run -i -t --rm \
+        -e CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
         -e CUDA_MODULE_LOADING=LAZY \
         -v $INPUT:$CONT_INPUT \
         -v $OUTPUT:$CONT_OUTPUT \
@@ -26,6 +30,7 @@ if [[ $OPTIONS =~ "--version-compatible" ]]; then
         $OPTIONS"
 else
     CUDA_MODULE_LOADING=LAZY \
+    CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES \
         polygraphy convert $INPUT -o $OUTPUT \
         $OPTIONS
 fi
