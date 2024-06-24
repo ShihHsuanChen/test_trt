@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 ./run_convert_trt.sh \
     ./models/onnx/crnn.onnx \
     ./models/trt_10.x/crnn.engine \
